@@ -1,6 +1,5 @@
 <template>
-  <a :href="getLinkUrl()" target="_blank">
-    {{ getLinkUrl() }}
+  <a ref="link" target="_blank">
   </a>
 </template>
 
@@ -8,7 +7,7 @@
 export default {
   props: {
     port: {
-      type: Number,
+      type: String,
       required: true
     },
     protocol: {
@@ -18,13 +17,21 @@ export default {
     path: {
       type: String,
       default: '/'
+    },
+    linkText: {
+      type: String
     }
   },
-  methods: {
-    getLinkUrl() {
+ mounted() {
+    this.$nextTick(() => {
+      const link = this.$refs.link;
       const hostname = window.location.hostname;
-      return `${this.protocol}${hostname}:${this.port}${this.path}`;
-    }
+      link.href = `${this.protocol}${hostname}:${this.port}${this.path}`;
+      if(this.linkText)
+        link.innerText = this.linkText;
+      else
+        link.innerText = link.href;
+    });
   }
 };
 </script>
