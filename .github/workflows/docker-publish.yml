@@ -69,7 +69,7 @@ jobs:
           cache-to: type=gha,mode=max
       - name: Test Docker image
         run: |
-          docker run --entrypoint=npm --rm ${{ steps.meta.outputs.tags }} 'run build'
+          docker run --rm ${{ steps.meta.outputs.tags }} npm run build
       # Build and push Docker image with Buildx (don't push on PR)
       # https://github.com/docker/build-push-action
       - name: Push Docker image
