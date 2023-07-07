@@ -38,8 +38,8 @@ module.exports = {
         link: '/lab/',
       },
       {
-        text: 'Config',
-        link: '/config/'
+        text: 'Services',
+        link: '/services/'
       }
     ],
     sidebar: {
