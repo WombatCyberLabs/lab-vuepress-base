@@ -38,6 +38,10 @@ module.exports = {
         link: '/lab/',
       },
       {
+        text: 'VPN',
+        link: '/vpn/'
+      },
+      {
         text: 'Services',
         link: '/services/'
       }
