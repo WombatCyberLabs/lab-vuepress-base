@@ -1,5 +1,8 @@
 <template>
-  <iframe ref="iframe" style="display:none"></iframe>
+	<div>
+	  <a @click="downloadConfig()">Download Config</a>
+	  <iframe ref="iframe" style="display:none"></iframe>
+	</div>
 </template>
 
 <script>
@@ -18,12 +21,14 @@ export default {
       default: '/'
     }
   },
- mounted() {
-    this.$nextTick(() => {
-      const iframe = this.$refs.iframe;
-      const hostname = window.location.hostname;
-      iframe.src = `${this.protocol}${hostname}:${this.port}${this.path}`;
-    });
+  methods:{
+    downloadConfig() {
+      this.$nextTick(() => {
+        const iframe = this.$refs.iframe;
+        const hostname = window.location.hostname;
+        iframe.src = `${this.protocol}${hostname}:${this.port}${this.path}`;
+      });
+    }
   }
 };
 </script>
